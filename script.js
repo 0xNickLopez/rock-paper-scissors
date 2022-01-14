@@ -6,23 +6,20 @@ function computerPlay() {
 }
 
 function playerSelection() {
-  const playerPrompt = prompt("Rock, Paper or Scissors?");
-  const promptFormat =
-    playerPrompt.charAt(0).toUpperCase() +
+  let playerPrompt = prompt("Rock, Paper or Scissors?");
+  let playerError = "Rock"
+  let promptFormat = playerPrompt.charAt(0).toUpperCase() +
     playerPrompt.substring(1).toLowerCase();
 
-  if (
-    promptFormat === "Rock" ||
-    promptFormat === "Paper" ||
-    promptFormat === "Scissors"
-  ) {
+  if (promptFormat === "Rock" || promptFormat === "Paper" || promptFormat === "Scissors") {
     return promptFormat;
   } else {
-    alert("Yikes! Choose again.");
-  }
-   //if function is called again the second pass is classified as undefined
-  playerSelection();
+    alert("Yikes, you don't know how to play! Let's go with Rock.");
+    return playerError;
+  };
 }
+
+
 
 switch (computerPlay()) {
   case 0:
@@ -35,6 +32,8 @@ switch (computerPlay()) {
     computerSelection = "Scissors";
     break;
 }
+
+
 
 console.log("Computer selection: " + computerSelection);
 console.log("Player selection: " + playerSelection());
