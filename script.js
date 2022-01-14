@@ -5,21 +5,24 @@ function computerPlay() {
   return Math.floor(Math.random() * (max - min));
 }
 
-function playerSelection() {
+function playerPlay() {
   let playerPrompt = prompt("Rock, Paper or Scissors?");
-  let playerError = "Rock"
-  let promptFormat = playerPrompt.charAt(0).toUpperCase() +
+  let playerError = "Rock";
+  let promptFormat =
+    playerPrompt.charAt(0).toUpperCase() +
     playerPrompt.substring(1).toLowerCase();
 
-  if (promptFormat === "Rock" || promptFormat === "Paper" || promptFormat === "Scissors") {
+  if (
+    promptFormat === "Rock" ||
+    promptFormat === "Paper" ||
+    promptFormat === "Scissors"
+  ) {
     return promptFormat;
   } else {
     alert("Yikes, you don't know how to play! Let's go with Rock.");
     return playerError;
-  };
+  }
 }
-
-
 
 switch (computerPlay()) {
   case 0:
@@ -33,7 +36,14 @@ switch (computerPlay()) {
     break;
 }
 
+let playerSelection = playerPlay();
 
+function playRound(playerSelection, computerSelection) {
+  if (playerSelection === computerSelection) {
+    return `You tie! ${playerSelection} and ${computerSelection}`;
+  } else {
+    return "You win!";
+  }
+}
 
-console.log("Computer selection: " + computerSelection);
-console.log("Player selection: " + playerSelection());
+console.log(playRound());
