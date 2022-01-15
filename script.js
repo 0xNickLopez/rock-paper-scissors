@@ -1,8 +1,8 @@
 function computerPlay() {
-  const min = 0;
-  const max = 3;
+  const MIN_NUM = 0;
+  const MAX_NUM = 3;
 
-  return Math.floor(Math.random() * (max - min));
+  return Math.floor(Math.random() * (MAX_NUM - MIN_NUM));
 }
 
 function playerPlay() {
@@ -36,14 +36,20 @@ switch (computerPlay()) {
     break;
 }
 
-let playerSelection = playerPlay();
+playerSelection = playerPlay();
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     return `You tie! ${playerSelection} and ${computerSelection}`;
+  } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+    return `You win! ${playerSelection} beats ${computerSelection}`;
+  } else if (playerSelection == "Paper" && computerSelection === "Rock") {
+    return `You win! ${playerSelection} beats ${computerSelection}`;
+  } else if (playerSelection == "Rock" && computerSelection === "Scissors") {
+    return `You win! ${playerSelection} beats ${computerSelection}`;
   } else {
-    return "You win!";
+    return `You lose! ${computerSelection} beats ${playerSelection}`;
   }
 }
 
-console.log(playRound());
+console.log(playRound(playerSelection, computerSelection));
