@@ -53,13 +53,23 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
+  //let computerScore = 0;
+  //let playerScore = 0;
+  //let drawScore = 0;
   for (i = 1; i <= 5; i++) {
     computerSelection = computerPlay();
     playerSelection = playerPlay();
     let gameResult = playRound(playerSelection, computerSelection);
     console.log(gameResult);
-    console.log(i);
+      //if (gameResult.indexOf("win")) {
+        //return playerScore++;
+      //} else if (gameResult.indexOf("lose")) {
+        //return computerScore++;
+      //} else {
+        //return drawScore++;
+      //}
   }
+  //console.log("player: ", playerScore, "computer: ", computerScore, "tie: ", drawScore);
 }
 
 game();
