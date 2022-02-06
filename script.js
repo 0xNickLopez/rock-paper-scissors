@@ -2,7 +2,21 @@ function computerPlay() {
   const MIN_NUM = 0;
   const MAX_NUM = 3;
 
-  return Math.floor(Math.random() * (MAX_NUM - MIN_NUM));
+  let computerRes = Math.floor(Math.random() * (MAX_NUM - MIN_NUM));
+
+  switch (computerRes) {
+    case 0:
+      computerSelection = "Rock";
+      break;
+    case 1:
+      computerSelection = "Paper";
+      break;
+    case 2:
+      computerSelection = "Scissors";
+      break;
+  }
+
+  return computerSelection;
 }
 
 function playerPlay() {
@@ -24,21 +38,7 @@ function playerPlay() {
   }
 }
 
-switch (computerPlay()) {
-  case 0:
-    computerSelection = "Rock";
-    break;
-  case 1:
-    computerSelection = "Paper";
-    break;
-  case 2:
-    computerSelection = "Scissors";
-    break;
-}
-
-
 function playRound(playerSelection, computerSelection) {
-
   if (playerSelection === computerSelection) {
     return `You tie! ${playerSelection} and ${computerSelection}`;
   } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
@@ -52,12 +52,14 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-//let i = 1
-//for(; i<=5; i++) {
-  //playerPlay();
-  //playRound(playerSelection, computerSelection);
-//}
-for(i=1; i<=5; i++) {
-  playerSelection = playerPlay();
-  console.log(playRound(playerSelection, computerSelection));
+function game() {
+  for (i = 1; i <= 5; i++) {
+    computerSelection = computerPlay();
+    playerSelection = playerPlay();
+    let gameResult = playRound(playerSelection, computerSelection);
+    console.log(gameResult);
+    console.log(i);
+  }
 }
+
+game();
