@@ -53,23 +53,33 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-  //let computerScore = 0;
-  //let playerScore = 0;
-  //let drawScore = 0;
+  let computerScore = 0;
+  let playerScore = 0;
+  let drawScore = 0;
   for (i = 1; i <= 5; i++) {
     computerSelection = computerPlay();
     playerSelection = playerPlay();
     let gameResult = playRound(playerSelection, computerSelection);
     console.log(gameResult);
-      //if (gameResult.indexOf("win")) {
-        //return playerScore++;
-      //} else if (gameResult.indexOf("lose")) {
-        //return computerScore++;
-      //} else {
-        //return drawScore++;
-      //}
+    if (gameResult.includes("You win!")) {
+      playerScore++;
+    } else if (gameResult.includes("You tie!")) {
+      drawScore++;
+    } else {
+      computerScore++;
+    }
   }
-  //console.log("player: ", playerScore, "computer: ", computerScore, "tie: ", drawScore);
+  console.log(computerScore);
+  console.log(playerScore);
+  console.log(drawScore);
+
+  if (computerScore > playerScore) {
+    console.log("You lose best of 5");
+  } else if (computerScore === playerScore) {
+    console.log("You tie best of 5!");
+  } else {
+    console.log("You win best of 5!");
+  }
 }
 
 game();
